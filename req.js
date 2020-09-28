@@ -1,5 +1,4 @@
 import fetch from "node-fetch";
-require("dotenv").config();
 
 export function datafc() {
   const url = `https://taskord.com/graphql`;
