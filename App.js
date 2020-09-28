@@ -8,8 +8,20 @@ import {
   Image,
 } from "react-native";
 import { Header, Icon, Avatar, Badge } from "react-native-elements";
+/*
+import { datafc } from "./req";
 
+
+async function getData() {
+  const data = await datafc();
+  console.log(data.data.tasks.data[0]);
+  return await data;
+}
+
+getData();
+*/
 export default function App() {
+
   const colorScheme = useColorScheme();
   return (
     <View>
@@ -38,7 +50,7 @@ export default function App() {
           <Avatar
             rounded
             source={{
-              uri: "https://randomuser.me/api/portraits/men/41.jpg",
+              uri: `https://randomuser.me/api/portraits/men/41.jpg`,
             }}
             size="small"
           />
@@ -49,7 +61,7 @@ export default function App() {
           />
         </View>
       </Header>
-      <Text>Yes!</Text>
+          <Text>Bruh</Text>
       <StatusBar style="auto" />
     </View>
   );
