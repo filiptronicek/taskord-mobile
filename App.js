@@ -20,7 +20,7 @@ export default function App() {
           color: colorScheme === "dark" ? "white" : "black",
           justifyContent: "space-around",
           marginBottom: Platform.OS === "ios" ? "20%" : "5%",
-          height: "auto",
+          height: 120,
         }}
       >
         <Icon
