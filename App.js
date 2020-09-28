@@ -1,8 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View, useColorScheme, TouchableOpacity } from 'react-native';
-import { Header, Icon, Input } from "react-native-elements";
-
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  useColorScheme,
+  Image,
+} from "react-native";
+import { Header, Icon, Avatar, Badge } from "react-native-elements";
 
 export default function App() {
   const colorScheme = useColorScheme();
@@ -15,11 +20,34 @@ export default function App() {
           color: colorScheme === "dark" ? "white" : "black",
           justifyContent: "space-around",
           marginBottom: Platform.OS === "ios" ? "20%" : "5%",
+          height: "auto",
         }}
       >
-        <Text>Left</Text>
-        <Text>Center</Text>
-        <Text>Right</Text>
+        <Icon
+          type="font-awesome" // The icon is loaded from the font awesome icon library
+          name="bars" // Icon fa-bars
+          color={colorScheme === "dark" ? "white" : "black"} // White color for contrast on the Header
+        />
+        <Image
+          style={styles.logo}
+          source={{
+            uri: "https://files.catbox.moe/uebvzr.png",
+          }}
+        ></Image>
+        <View>
+          <Avatar
+            rounded
+            source={{
+              uri: "https://randomuser.me/api/portraits/men/41.jpg",
+            }}
+            size="small"
+          />
+
+          <Badge
+            status="success"
+            containerStyle={{ position: "absolute", top: -4, right: -4 }}
+          />
+        </View>
       </Header>
       <Text>Yes!</Text>
       <StatusBar style="auto" />
@@ -30,9 +58,13 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  logo: {
+    width: 50,
+    height: 50,
   },
 });
 
