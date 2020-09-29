@@ -6,8 +6,8 @@ import { KeyboardAvoidingView } from './extra/3rd-party';
 
 export const SignInScreen = ({ navigation }) => {
 
-  const [email, setEmail] = React.useState();
-  const [password, setPassword] = React.useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   const styles = useStyleSheet(themedStyles);
