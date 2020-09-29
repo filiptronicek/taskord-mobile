@@ -1,5 +1,5 @@
 # Taskord mobile (WIP)
-Mobile app for the Taskord platform
+Mobile app for the [Taskord](https://gitlab.com/taskord/taskord) platform
 
 ## Local setup
 1. Make sure you have Node.js installed
