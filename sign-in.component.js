@@ -13,7 +13,7 @@ export const SignInScreen = ({ navigation }) => {
   const styles = useStyleSheet(themedStyles);
 
   const onSignUpButtonPress = () => {
-    navigation && navigation.navigate('SignUp2');
+    navigation && navigation.navigate('SignUp');
   };
 
   const onForgotPasswordButtonPress = () => {
