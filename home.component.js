@@ -5,7 +5,7 @@ import { Button, Divider, Layout, TopNavigation } from '@ui-kitten/components';
 export const HomeScreen = ({ navigation }) => {
 
   const navigateDetails = () => {
-    navigation.navigate('Home');
+    navigation.navigate('SignIn');
   };
 
   return (
