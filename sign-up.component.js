@@ -32,7 +32,7 @@ export const SignUpScreen = ({ navigation }) => {
   };
 
   const onSignInButtonPress = () => {
-    navigation && navigation.navigate("SignIn2");
+    navigation && navigation.navigate("SignIn");
   };
 
   const onPasswordIconPress = () => {
@@ -84,7 +84,7 @@ export const SignUpScreen = ({ navigation }) => {
           textStyle={styles.termsCheckBoxText}
           text="I read and agree to Terms & Conditions"
           checked={termsAccepted}
-          onChange={(checked: boolean) => setTermsAccepted(checked)}
+          onChange={(checked) => setTermsAccepted(checked)}
         />
       </Layout>
       <Button
