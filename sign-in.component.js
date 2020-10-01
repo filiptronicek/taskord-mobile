@@ -77,7 +77,7 @@ export const SignInScreen = ({ navigation }) => {
         appearance='ghost'
         status='basic'
         onPress={onSignUpButtonPress}>
-        Don't have an account? Create
+        Don't have a Taskord account? Create one
       </Button>
     </KeyboardAvoidingView>
   );
