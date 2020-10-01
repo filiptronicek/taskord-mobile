@@ -1,5 +1,3 @@
-import React, { useState } from 'react';
-import { View } from "react-native";
 import {
   Button,
   CheckBox,
@@ -8,7 +6,10 @@ import {
   StyleService,
   useStyleSheet,
 } from "@ui-kitten/components";
-import { ProfileAvatar } from "./extra/profile-avatar.component";
+import React, { useState } from "react";
+import { View } from "react-native";
+
+import { KeyboardAvoidingView } from "./extra/3rd-party";
 import {
   EmailIcon,
   EyeIcon,
@@ -16,7 +17,7 @@ import {
   PersonIcon,
   PlusIcon,
 } from "./extra/icons";
-import { KeyboardAvoidingView } from "./extra/3rd-party";
+import { ProfileAvatar } from "./extra/profile-avatar.component";
 
 export const SignUpScreen = ({ navigation }) => {
   const [userName, setUserName] = React.useState();
@@ -100,7 +101,8 @@ export const SignUpScreen = ({ navigation }) => {
         status="basic"
         onPress={onSignInButtonPress}
       >
-        Already have an account? Sign In
+        {" "}
+        Already have an account ? Sign In
       </Button>
     </KeyboardAvoidingView>
   );
