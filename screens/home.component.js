@@ -1,9 +1,9 @@
-import AsyncStorage from '@react-native-community/async-storage';
-import {Button, Divider, Layout, TopNavigation} from "@ui-kitten/components";
+import AsyncStorage from "@react-native-community/async-storage";
+import { Button, Divider, Layout, TopNavigation } from "@ui-kitten/components";
 import React from "react";
-import {SafeAreaView} from "react-native";
+import { SafeAreaView } from "react-native";
 
-export const HomeScreen = ({navigation}) => {
+export const HomeScreen = ({ navigation }) => {
   const signIn = () => {
     navigation.navigate("SignIn");
   };
