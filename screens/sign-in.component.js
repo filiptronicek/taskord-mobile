@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
 import { Button, Input, Layout, StyleService, Text, useStyleSheet } from '@ui-kitten/components';
-import { EyeIcon, EyeOffIcon, PersonIcon } from './extra/icons';
-import { KeyboardAvoidingView } from './extra/3rd-party';
+import { EyeIcon, EyeOffIcon, PersonIcon } from '../extra/icons';
+import { KeyboardAvoidingView } from '../extra/3rd-party';
 
 export const SignInScreen = ({ navigation }) => {
 
