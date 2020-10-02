@@ -24,6 +24,6 @@ export const signIn = async (email, password) => {
 
   return fetch(url, opts)
     .then((res) => res.json())
-    .then((resp) => resp)
-    //.catch(console.error);
+    .then((resp) => resp);
+  //.catch(console.error);
 };
