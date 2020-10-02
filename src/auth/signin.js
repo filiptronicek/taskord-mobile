@@ -1,6 +1,6 @@
 import { fetch } from 'node-fetch';
 
-const signIn = async(email, password) => {
+export const signIn = async(email, password) => {
     const url = `https://taskord.com/graphql`;
     const query = `
         mutation {
@@ -21,6 +21,7 @@ const signIn = async(email, password) => {
       },
       body: JSON.stringify({ query }),
     };
+    
     return fetch(url, opts)
       .then((res) => res.json())
       .then((resp) => resp)
