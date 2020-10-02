@@ -7,14 +7,14 @@ import {
   Text,
   useStyleSheet,
 } from "@ui-kitten/components";
-import React, {useState} from "react";
-import {View} from "react-native";
+import React, { useState } from "react";
+import { View } from "react-native";
 
-import {KeyboardAvoidingView} from "../extra/3rd-party";
-import {EyeIcon, EyeOffIcon, PersonIcon} from "../extra/icons";
-import {signIn} from "../src/auth/signin";
+import { KeyboardAvoidingView } from "../extra/3rd-party";
+import { EyeIcon, EyeOffIcon, PersonIcon } from "../extra/icons";
+import { signIn } from "../src/auth/signin";
 
-export const SignInScreen = ({navigation}) => {
+export const SignInScreen = ({ navigation }) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -22,13 +22,13 @@ export const SignInScreen = ({navigation}) => {
   const auth = async () => {
     const authResponce = await signIn(email, password);
     console.log(await AsyncStorage.getItem("usr_token"));
-    
-    if(await AsyncStorage.getItem("usr_token")) navigation.navigate("Home");
+
+    if (await AsyncStorage.getItem("usr_token")) navigation.navigate("Home");
 
     try {
       const value = authResponce.data.login.token;
       if (value !== null) {
-        await AsyncStorage.setItem('usr_token', value);
+        await AsyncStorage.setItem("usr_token", value);
         navigation.navigate("Home");
       } else {
         navigation.navigate("Home");
