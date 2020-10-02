@@ -21,7 +21,6 @@ export const SignInScreen = ({ navigation }) => {
 
   const auth = async () => {
     const authResponce = await signIn(email, password);
-    console.log(await AsyncStorage.getItem("usr_token"));
 
     if (await AsyncStorage.getItem("usr_token")) navigation.navigate("Home");
 
