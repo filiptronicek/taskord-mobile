@@ -15,13 +15,15 @@ export const signIn = async (email, password) => {
    `;
 
   const opts = {
-    method : "POST",
-    headers : {
-      "Content-Type" : "application/json",
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
     },
-    body : JSON.stringify({query}),
+    body: JSON.stringify({ query }),
   };
 
-  return fetch(url, opts).then((res) => res.json()).then((resp) => resp)
+  return fetch(url, opts)
+    .then((res) => res.json())
+    .then((resp) => resp);
   //.catch(console.error);
 };
