@@ -1,4 +1,4 @@
-import { fetch } from 'node-fetch';
+const fetch = require('node-fetch');
 
 export const signIn = async(email, password) => {
     const url = `https://taskord.com/graphql`;

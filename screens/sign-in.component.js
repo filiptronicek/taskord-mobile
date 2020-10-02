@@ -9,13 +9,36 @@ import {
 import React, { useState } from "react";
 import { View } from "react-native";
 
-import { KeyboardAvoidingView } from "./extra/3rd-party";
-import { EyeIcon, EyeOffIcon, PersonIcon } from "./extra/icons";
+import AsyncStorage from "@react-native-community/async-storage";
+
+import { KeyboardAvoidingView } from "../extra/3rd-party";
+import { EyeIcon, EyeOffIcon, PersonIcon } from "../extra/icons";
+
+import { signIn } from "../src/auth/signin";
 
 export const SignInScreen = ({ navigation }) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [passwordVisible, setPasswordVisible] = useState(false);
+
+  const auth = async () => {
+    const authResponce = await signIn(email, password);
+    console.log(await AsyncStorage.getItem("usr_token"));
+    
+    if(await AsyncStorage.getItem("usr_token")) navigation.navigate("Home");
+
+    try {
+      const value = authResponce.data.login.token;
+      if (value !== null) {
+        await AsyncStorage.setItem('usr_token', value);
+        navigation.navigate("Home");
+      } else {
+        navigation.navigate("Home");
+      }
+    } catch (e) {
+      // error reading value
+    }
+  };
 
   const styles = useStyleSheet(themedStyles);
 
@@ -68,7 +91,7 @@ export const SignInScreen = ({ navigation }) => {
           </Button>
         </View>
       </Layout>
-      <Button style={styles.signInButton} size="giant">
+      <Button style={styles.signInButton} size="giant" onPress={auth}>
         SIGN IN
       </Button>
       <Button
