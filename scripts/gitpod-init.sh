@@ -1,1 +1,3 @@
-npm i && expo doctor
+npm i
+npm i -g expo-cli
+expo doctor
