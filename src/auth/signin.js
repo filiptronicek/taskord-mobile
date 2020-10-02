@@ -11,7 +11,7 @@ export const signIn = async (email, password) => {
                 id
             }
             }
-        }      
+        }
    `;
 
   const opts = {
