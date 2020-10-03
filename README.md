@@ -10,4 +10,5 @@ Setup in GitPod:
 ## Local setup
 
 1. Make sure you have Node.js installed
+1. Install `expo-cli` globally: `npm i -g expo-cli`
 1. Run `npm i && npm start`
