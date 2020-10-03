@@ -4,6 +4,6 @@ export const signOut = async () => {
   try {
     await AsyncStorage.removeItem("usr_token");
   } catch (e) {
-    alert("Failed to log you out :(")
+    alert("Failed to log you out :(");
   }
 };
