@@ -10,7 +10,7 @@ export const HomeScreen = ({ navigation }) => {
 
   const getData = async () => {
     try {
-      const value = await AsyncStorage.getItem("usr_token");
+      const value = await AsyncStorage.getItem("USR_TOKEN");
       if (value !== null) {
         // value previously stored
       } else {

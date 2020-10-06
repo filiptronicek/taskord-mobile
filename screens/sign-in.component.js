@@ -22,12 +22,12 @@ export const SignInScreen = ({ navigation }) => {
   const auth = async () => {
     const authResponce = await signIn(email, password);
 
-    if (await AsyncStorage.getItem("usr_token")) navigation.navigate("Home");
+    if (await AsyncStorage.getItem("USR_TOKEN")) navigation.navigate("Home");
 
     try {
       const value = authResponce.data.login.token;
       if (value !== null) {
-        await AsyncStorage.setItem("usr_token", value);
+        await AsyncStorage.setItem("USR_TOKEN", value);
         navigation.navigate("Home");
       } else {
         navigation.navigate("Home");
