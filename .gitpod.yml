@@ -1,0 +1,5 @@
+tasks:
+    - name: Run Expo Server
+    - init: bash ./scripts/gitpod-init.sh
+      command: npm start
+  
