@@ -1,9 +1,13 @@
 import AsyncStorage from "@react-native-community/async-storage";
 import { Button, Divider, Layout, TopNavigation } from "@ui-kitten/components";
-import React from "react";
+import React, {useState} from "react";
 import { SafeAreaView } from "react-native";
+import { signOut } from "../src/auth/signout";
 
 export const HomeScreen = ({ navigation }) => {
+
+  const [showSignIn, setShowSignIn] = useState(true);
+
   const signIn = () => {
     navigation.navigate("SignIn");
   };
@@ -12,7 +16,7 @@ export const HomeScreen = ({ navigation }) => {
     try {
       const value = await AsyncStorage.getItem("USR_TOKEN");
       if (value !== null) {
-        // value previously stored
+        setShowSignIn(false);
       } else {
         signIn();
       }
@@ -21,6 +25,7 @@ export const HomeScreen = ({ navigation }) => {
     }
   };
   getData();
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <TopNavigation title="TASKORD" alignment="center" />
@@ -28,7 +33,7 @@ export const HomeScreen = ({ navigation }) => {
       <Layout
         style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
       >
-        <Button onPress={signIn}>Sign In</Button>
+        { showSignIn ? <Button onPress={signIn}>Sign In</Button> :  <Button onPress={signIn}>Sign Out</Button> }
       </Layout>
     </SafeAreaView>
   );
