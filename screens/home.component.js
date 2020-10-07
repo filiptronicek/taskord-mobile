@@ -30,9 +30,12 @@ export const HomeScreen = ({ navigation }) => {
     getData();
   };
 
-
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView
+      style={{
+        flex: 1,
+      }}
+    >
       <TopNavigation title="TASKORD" alignment="center" />
       <Divider />
       <Layout
