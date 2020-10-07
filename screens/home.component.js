@@ -25,6 +25,12 @@ export const HomeScreen = ({ navigation }) => {
   };
   getData();
 
+  const signUserOut = async () => {
+    signOut();
+    getData();
+  };
+
+
   return (
     <SafeAreaView
       style={{
@@ -43,7 +49,7 @@ export const HomeScreen = ({ navigation }) => {
         {showSignIn ? (
           <Button onPress={signIn}>Sign In</Button>
         ) : (
-          <Button onPress={signIn}>Sign Out</Button>
+          <Button onPress={signUserOut}>Sign Out</Button>
         )}
       </Layout>
     </SafeAreaView>
