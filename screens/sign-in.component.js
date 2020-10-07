@@ -1,11 +1,11 @@
 import AsyncStorage from "@react-native-community/async-storage";
 import {
-    Button,
-    Input,
-    Layout,
-    StyleService,
-    Text,
-    useStyleSheet
+  Button,
+  Input,
+  Layout,
+  StyleService,
+  Text,
+  useStyleSheet
 } from "@ui-kitten/components";
 import React, {useState} from "react";
 import {View} from "react-native";
@@ -15,43 +15,38 @@ import {EyeIcon, EyeOffIcon, PersonIcon} from "../extra/icons";
 import {signIn} from "../src/auth/signin";
 
 export const SignInScreen = ({navigation}) => {
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
-    const [passwordVisible, setPasswordVisible] = useState(false);
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
-    const auth = async () => {
-        const authResponce = await signIn(email, password);
+  const auth = async () => {
+    const authResponce = await signIn(email, password);
 
-        if (await AsyncStorage.getItem("USR_TOKEN")) 
-            navigation.navigate("Home");
-        
+    if (await AsyncStorage.getItem("USR_TOKEN"))
+      navigation.navigate("Home");
 
-        try {
-            const value = authResponce.data.login.token;
-            if (value !== null) {
-                await AsyncStorage.setItem("USR_TOKEN", value);
-                navigation.navigate("Home");
-            } else {
-                navigation.navigate("Home");
-            }
-        } catch (e) {
-            alert("Cannot log you in :(");
-        }
-    };
+    try {
+      const value = authResponce.data.login.token;
+      if (value !== null) {
+        await AsyncStorage.setItem("USR_TOKEN", value);
+        navigation.navigate("Home");
+      } else {
+        navigation.navigate("Home");
+      }
+    } catch (e) {
+      alert("Cannot log you in :(");
+    }
+  };
 
-    const styles = useStyleSheet(themedStyles);
+  const styles = useStyleSheet(themedStyles);
 
-    const onSignUpButtonPress = () => {
-        navigation && navigation.navigate("SignUp");
-    };
+  const onSignUpButtonPress =
+      () => { navigation && navigation.navigate("SignUp"); };
 
-    const onForgotPasswordButtonPress = () => {
-        navigation && navigation.navigate("ForgotPassword");
-    };
+  const onForgotPasswordButtonPress =
+      () => { navigation && navigation.navigate("ForgotPassword"); };
 
-    const onPasswordIconPress = () => {
-        setPasswordVisible(!passwordVisible);
-    };
+  const onPasswordIconPress = () => { setPasswordVisible(!passwordVisible); };
 
     return (
         <KeyboardAvoidingView style={
@@ -79,8 +74,8 @@ export const SignInScreen = ({navigation}) => {
                     icon={PersonIcon}
                     value={email}
                     onChangeText={setEmail}
-                    label={evaProps => <Text {...evaProps}>E-mail</Text>}
-                    />
+                    label={evaProps => <Text {...evaProps}>E-mail</Text>
+} />
                 <Input style={
                         styles.passwordInput
                     }
@@ -92,9 +87,10 @@ export const SignInScreen = ({navigation}) => {
                     secureTextEntry={
                         !passwordVisible
                     }
-                    label={evaProps => <Text {...evaProps}>Password</Text>}
-                    onChangeText={setPassword}
-                    onIconPress={onPasswordIconPress}/>
+                    label={evaProps => <Text {...evaProps}>Password</Text >
+}
+onChangeText = {setPassword} onIconPress =
+    {onPasswordIconPress} />
                 <View style={
                     styles.forgotPasswordContainer
                 }>
@@ -105,16 +101,14 @@ export const SignInScreen = ({navigation}) => {
                         status="basic"
                         onPress={onForgotPasswordButtonPress}>
                         Forgot your password?
-                    </Button>
-                </View>
-            </Layout>
-            <Button style={
-                    styles.signInButton
-                }
-                size="giant"
-                onPress={auth}>
-                SIGN IN
-            </Button>
+                    </Button >
+    </View>
+            </Layout>< Button style = {styles.signInButton} size =
+        "giant"
+onPress =
+    {auth} >
+    SIGN IN<
+        /Button>
             <Button style={
                     styles.signUpButton
                 }
@@ -122,8 +116,8 @@ export const SignInScreen = ({navigation}) => {
                 status="basic"
                 onPress={onSignUpButtonPress}>
                 Don't have a Taskord account? Create one
-            </Button>
-        </KeyboardAvoidingView>
+            </Button><
+    /KeyboardAvoidingView>
     );
 };
 
