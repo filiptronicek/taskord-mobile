@@ -78,7 +78,9 @@ export const SignInScreen = ({navigation}) => {
                 <Input placeholder="Email"
                     icon={PersonIcon}
                     value={email}
-                    onChangeText={setEmail}/>
+                    onChangeText={setEmail}
+                    label={evaProps => <Text {...evaProps}>E-mail</Text>}
+                    />
                 <Input style={
                         styles.passwordInput
                     }
@@ -90,6 +92,7 @@ export const SignInScreen = ({navigation}) => {
                     secureTextEntry={
                         !passwordVisible
                     }
+                    label={evaProps => <Text {...evaProps}>Password</Text>}
                     onChangeText={setPassword}
                     onIconPress={onPasswordIconPress}/>
                 <View style={
