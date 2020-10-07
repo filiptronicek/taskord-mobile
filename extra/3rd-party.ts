@@ -5,7 +5,7 @@ import { ScrollViewProps } from 'react-native';
  * https://github.com/APSL/react-native-keyboard-aware-scroll-view
  */
 export const KeyboardAvoidingView = (props: any): React.ReactElement => {
-  const lib = require('react-native-keyboard-aware-scroll-view');
+  const lib = require('@codler/react-native-keyboard-aware-scroll-view');
 
   const defaultProps: ScrollViewProps = {
     style: { flex: 1 },
