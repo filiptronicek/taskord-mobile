@@ -1,16 +1,24 @@
 import AsyncStorage from "@react-native-community/async-storage";
-import { Button, Divider, Layout, TopNavigation, Avatar } from "@ui-kitten/components";
+import {
+  Avatar,
+  Button,
+  Divider,
+  Layout,
+  TopNavigation,
+} from "@ui-kitten/components";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native";
 
-import { signOut } from "../src/auth/signout";
 import { requestData } from "../src/app/api-req";
+import { signOut } from "../src/auth/signout";
 
 export const HomeScreen = ({ navigation }) => {
   const [showSignIn, setShowSignIn] = useState(true);
-  const [avatarURL, setAvatarURL] = useState("https://avatars0.githubusercontent.com/u/848102?s=200&v=4");
+  const [avatarURL, setAvatarURL] = useState(
+    "https://avatars0.githubusercontent.com/u/848102?s=200&v=4"
+  );
 
-  const getAvatar = async() => {
+  const getAvatar = async () => {
     const reqRes = await requestData();
     setAvatarURL(reqRes.data.me.avatar);
   };
@@ -54,7 +62,7 @@ export const HomeScreen = ({ navigation }) => {
           alignItems: "center",
         }}
       >
-          <Avatar source={{uri: avatarURL}}/>
+        <Avatar source={{ uri: avatarURL }} />
         {showSignIn ? (
           <Button onPress={signIn}>Sign In</Button>
         ) : (
