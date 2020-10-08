@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-community/async-storage";
 import { Button, Divider, Layout, TopNavigation, Avatar } from "@ui-kitten/components";
 import React, { useState } from "react";
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, View } from "react-native";
 
 import { signOut } from "../src/auth/signout";
 import { requestData } from "../src/app/api-req";
@@ -47,6 +47,9 @@ export const HomeScreen = ({ navigation }) => {
     >
       <TopNavigation title="TASKORD" alignment="center" />
       <Divider />
+      <View style={{alignItems: 'flex-end'}}>
+        <Avatar source={{uri: avatarURL}} style={{justifyContent: 'right', alignItems: 'right'}}/>
+      </View>
       <Layout
         style={{
           flex: 1,
@@ -54,7 +57,6 @@ export const HomeScreen = ({ navigation }) => {
           alignItems: "center",
         }}
       >
-          <Avatar source={{uri: avatarURL}}/>
         {showSignIn ? (
           <Button onPress={signIn}>Sign In</Button>
         ) : (
