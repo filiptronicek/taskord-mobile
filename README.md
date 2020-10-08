@@ -8,7 +8,6 @@ Mobile app for the [Taskord](https://gitlab.com/taskord/taskord) platform
     <img src="https://gitpod.io/button/open-in-gitpod.svg" width="150" alt="Push" align="center">
 </a>
 
-
 ## Local setup
 
 1.  Make sure you have Node.js installed
