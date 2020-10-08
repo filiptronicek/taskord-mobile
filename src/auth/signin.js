@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
+import { api_endpoint as url} from '../consts';
 
 export const signIn = async (email, password) => {
-  const url = `https://taskord.com/graphql`;
   const query = `
         mutation {
             login(email: "${email}", password: "${password}") {
