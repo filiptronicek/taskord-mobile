@@ -4,18 +4,19 @@ import {
   Button,
   Divider,
   Layout,
-  TopNavigation
+  TopNavigation,
 } from "@ui-kitten/components";
-import React, {useState} from "react";
-import {SafeAreaView, View} from "react-native";
+import React, { useState } from "react";
+import { SafeAreaView, View } from "react-native";
 
-import {requestData} from "../src/app/api-req";
-import {signOut} from "../src/auth/signout";
+import { requestData } from "../src/app/api-req";
+import { signOut } from "../src/auth/signout";
 
-export const HomeScreen = ({navigation}) => {
+export const HomeScreen = ({ navigation }) => {
   const [showSignIn, setShowSignIn] = useState(true);
-  const [avatarURL, setAvatarURL] =
-      useState("https://avatars0.githubusercontent.com/u/848102?s=200&v=4");
+  const [avatarURL, setAvatarURL] = useState(
+    "https://avatars0.githubusercontent.com/u/848102?s=200&v=4"
+  );
 
   const getAvatar = async () => {
     const reqRes = await requestData();
@@ -23,7 +24,9 @@ export const HomeScreen = ({navigation}) => {
   };
   getAvatar();
 
-  const signIn = () => { navigation.navigate("SignIn"); };
+  const signIn = () => {
+    navigation.navigate("SignIn");
+  };
 
   const getData = async () => {
     try {
@@ -45,20 +48,20 @@ export const HomeScreen = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView
-  style = {{ flex: 1, }} >
-          <TopNavigation title = "TASKORD" alignment = "center" /><Divider />
-          <View style = {{ alignItems: 'flex-end' }}>
-          <Avatar source =
-           {
-             { uri: avatarURL }
-           } style =
-           {
-             { justifyContent: 'right', alignItems: 'right' }
-           } />
-      </View>< Layout
+    <SafeAreaView style={{ flex: 1 }}>
+      <TopNavigation title="TASKORD" alignment="center" />
+      <Divider />
+      <View style={{ alignItems: "flex-end" }}>
+        <Avatar
+          source={{ uri: avatarURL }}
+          style={{ justifyContent: "right", alignItems: "right" }}
+        />
+      </View>
+      <Layout
         style={{
-    flex: 1, justifyContent: "center", alignItems: "center",
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         {showSignIn ? (
