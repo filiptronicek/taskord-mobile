@@ -11,7 +11,7 @@ export const HomeScreen = ({ navigation }) => {
   const [avatarURL, setAvatarURL] = useState("https://avatars0.githubusercontent.com/u/848102?s=200&v=4");
 
   const getAvatar = async() => {
-    const reqRes = await requestData();
+    const reqRes = await requestData("avatar");
     setAvatarURL(reqRes.data.me.avatar);
   };
   getAvatar();
@@ -48,7 +48,7 @@ export const HomeScreen = ({ navigation }) => {
       <TopNavigation title="TASKORD" alignment="center" />
       <Divider />
       <View style={{alignItems: 'flex-end'}}>
-        <Avatar source={{uri: avatarURL}} style={{justifyContent: 'right', alignItems: 'right'}}/>
+        <Avatar source={{uri: avatarURL}} style={{justifyContent: 'flex-start', alignItems: 'flex-start'}}/>
       </View>
       <Layout
         style={{
