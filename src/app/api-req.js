@@ -30,6 +30,10 @@ export const requestData = async (params) => {
           }
           edges {
             node {
+              user {
+                username
+                avatar
+              }
               id
               task
             }

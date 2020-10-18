@@ -1,14 +1,68 @@
 import AsyncStorage from "@react-native-community/async-storage";
-import { Button, Divider, Layout, TopNavigation, Avatar } from "@ui-kitten/components";
+import { Button, Divider, Layout, TopNavigation, Avatar, Card, List, Text } from "@ui-kitten/components";
 import React, { useState } from "react";
-import { SafeAreaView, View } from "react-native";
+import { SafeAreaView, View, StyleSheet } from "react-native";
 
 import { signOut } from "../src/auth/signout";
 import { requestData } from "../src/app/api-req";
 
+const data = new Array(5).fill({
+  title: 'Item',
+});
+
+const ListCustomItemShowcase = ( props ) => {
+
+  const renderItemHeader = (headerProps, info) => (
+    <View {...headerProps}>
+      <Text category='h6'>
+        {info.item.node.id}
+      </Text>
+    </View>
+  );
+
+  const renderItemFooter = (footerProps, info) => (
+    <Text {...footerProps}>
+      By {info.item.node.user.username}
+    </Text>
+  );
+
+  const renderItem = (info) => (
+    <Card
+      style={styles.item}
+      status='basic'
+      header={headerProps => renderItemHeader(headerProps, info)}
+      footer={footerProps => renderItemFooter(footerProps, info)}>
+      <Text>
+        {info.item.node.task}
+      </Text>
+    </Card>
+  );
+
+  return (
+    props.data ?
+    <List
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}
+      data={props.data}
+      renderItem={renderItem}
+    />
+    : null
+  );
+};
+
 export const HomeScreen = ({ navigation }) => {
   const [showSignIn, setShowSignIn] = useState(true);
+  
   const [avatarURL, setAvatarURL] = useState("https://avatars0.githubusercontent.com/u/848102?s=200&v=4");
+  const [tasks, setTasks] = useState("");
+
+  const getTasks = async() => {
+    if(tasks === "") {
+      const reqRes = await requestData("tasks");
+      setTasks(reqRes.data);
+    }
+  };
+  getTasks();
 
   const getAvatar = async() => {
     const reqRes = await requestData("avatar");
@@ -38,7 +92,6 @@ export const HomeScreen = ({ navigation }) => {
     signOut();
     getData();
   };
-
   return (
     <SafeAreaView
       style={{
@@ -60,9 +113,25 @@ export const HomeScreen = ({ navigation }) => {
         {showSignIn ? (
           <Button onPress={signIn}>Sign In</Button>
         ) : (
+          <View>
+          <ListCustomItemShowcase data={tasks?.tasks?.edges} />
           <Button onPress={signUserOut}>Sign Out</Button>
+          </View>
         )}
       </Layout>
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    maxHeight: 1500,
+  },
+  contentContainer: {
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+  },
+  item: {
+    marginVertical: 4,
+  },
+});
