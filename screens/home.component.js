@@ -6,6 +6,10 @@ import { SafeAreaView, View, StyleSheet } from "react-native";
 import { signOut } from "../src/auth/signout";
 import { requestData } from "../src/app/api-req";
 
+const dayjs = require('dayjs');
+const relativeTime = require('dayjs/plugin/relativeTime');
+dayjs.extend(relativeTime);
+
 const data = new Array(5).fill({
   title: 'Item',
 });
@@ -15,7 +19,7 @@ const ListCustomItemShowcase = ( props ) => {
   const renderItemHeader = (headerProps, info) => (
     <View {...headerProps}>
       <Text category='h6'>
-        {info.item.node.id}
+        {info.item.node.task}
       </Text>
     </View>
   );
@@ -26,17 +30,21 @@ const ListCustomItemShowcase = ( props ) => {
     </Text>
   );
 
-  const renderItem = (info) => (
+  const renderItem = (info) => {
+
+    //const date = new Date(info.item.node.created_at);
+    return (
     <Card
       style={styles.item}
       status='basic'
       header={headerProps => renderItemHeader(headerProps, info)}
       footer={footerProps => renderItemFooter(footerProps, info)}>
       <Text>
-        {info.item.node.task}
+        Created {dayjs(info.item.node.created_at).fromNow()}
       </Text>
     </Card>
-  );
+    );
+  };
 
   return (
     props.data ?
