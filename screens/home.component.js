@@ -6,6 +6,8 @@ import { SafeAreaView, View, StyleSheet } from "react-native";
 import { signOut } from "../src/auth/signout";
 import { requestData } from "../src/app/api-req";
 
+/* Day.js options */
+
 const dayjs = require('dayjs');
 const relativeTime = require('dayjs/plugin/relativeTime');
 dayjs.extend(relativeTime);
