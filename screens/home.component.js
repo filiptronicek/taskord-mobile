@@ -10,10 +10,6 @@ const dayjs = require('dayjs');
 const relativeTime = require('dayjs/plugin/relativeTime');
 dayjs.extend(relativeTime);
 
-const data = new Array(5).fill({
-  title: 'Item',
-});
-
 const ListCustomItemShowcase = ( props ) => {
 
   const renderItemHeader = (headerProps, info) => (
