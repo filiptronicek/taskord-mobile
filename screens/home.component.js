@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-community/async-storage";
-import { Button, Divider, Layout, TopNavigation, Avatar, Card, List, Text } from "@ui-kitten/components";
+import { Button, Divider, Layout, TopNavigation, Avatar, Card, List, Text, CheckBox } from "@ui-kitten/components";
 import React, { useState } from "react";
 import { SafeAreaView, View, StyleSheet } from "react-native";
 
@@ -17,7 +17,13 @@ const ListCustomItemShowcase = ( props ) => {
   const renderItemHeader = (headerProps, info) => (
     <View {...headerProps}>
       <Text category='h6'>
-        {info.item.node.task}
+        <CheckBox
+          style={styles.checkbox}
+          status='success'
+          checked={info.item.node.done}
+          >
+          {info.item.node.task}
+        </CheckBox>
       </Text>
     </View>
   );
@@ -30,7 +36,7 @@ const ListCustomItemShowcase = ( props ) => {
 
   const renderItem = (info) => {
 
-    //const date = new Date(info.item.node.created_at);
+    const date = info.item.node.done ? dayjs(info.item.node.done_at).fromNow() : dayjs(info.item.node.created_at).fromNow();
     return (
     <Card
       style={styles.item}
@@ -38,7 +44,7 @@ const ListCustomItemShowcase = ( props ) => {
       header={headerProps => renderItemHeader(headerProps, info)}
       footer={footerProps => renderItemFooter(footerProps, info)}>
       <Text>
-        Created {dayjs(info.item.node.created_at).fromNow()}
+        {info.item.node.done ? "Done" : "Created" } {date}
       </Text>
     </Card>
     );
