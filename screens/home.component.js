@@ -37,14 +37,9 @@ const ListCustomItemShowcase = ( props ) => {
 
     const [praised, setPraised] = useState(IPraised);
 
-
-    const praise = async (id) => {
-      await praiseTask(id);
-    };
-
-    const togglePraise = () => {
-      setPraised(!praised);
-      praise(info.item.node.id)
+    const togglePraise = async() => {
+      const resp = await praiseTask(info.item.node.id);
+      if(!resp.data.praiseTask.response.includes("can't")) setPraised(!praised); 
     }
 
     return (
