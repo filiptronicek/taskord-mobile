@@ -65,7 +65,7 @@ const ListCustomItemShowcase = ( props ) => {
 export const HomeScreen = ({ navigation }) => {
   const [showSignIn, setShowSignIn] = useState(true);
   
-  const [avatarURL, setAvatarURL] = useState("https://avatars0.githubusercontent.com/u/848102?s=200&v=4");
+  const [avatarURL, setAvatarURL] = useState("assets/image-person.png");
   const [tasks, setTasks] = useState("");
 
   const getTasks = async() => {
