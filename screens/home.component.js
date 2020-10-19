@@ -126,8 +126,9 @@ export const HomeScreen = ({ navigation }) => {
           <Button onPress={signIn}>Sign In</Button>
         ) : (
           <View>
-          <ListCustomItemShowcase data={tasks?.tasks?.edges} />
-          <Button onPress={signUserOut}>Sign Out</Button>
+            <Text category="h2" style={{marginLeft: 10}}>Tasks</Text>
+            <ListCustomItemShowcase data={tasks?.tasks?.edges} />
+            <Button onPress={signUserOut}>Sign Out</Button>
           </View>
         )}
       </Layout>
