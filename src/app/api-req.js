@@ -39,6 +39,13 @@ export const requestData = async (params) => {
               created_at
               done_at
               done
+              praises (first: 100) {
+                edges {
+                  node {
+                    username
+                  }
+                }
+              }
             }
           }
         }

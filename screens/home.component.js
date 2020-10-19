@@ -5,6 +5,8 @@ import { SafeAreaView, View, StyleSheet } from "react-native";
 
 import { signOut } from "../src/auth/signout";
 import { requestData } from "../src/app/api-req";
+import { praiseTask } from "../src/app/praiseTask";
+
 
 /* Day.js options */
 
@@ -29,15 +31,26 @@ const ListCustomItemShowcase = ( props ) => {
   );
 
   const renderItemFooter = (footerProps, info) => {
-    const [praised, setPraised] = useState(false);
+
+    const allPraises = info.item.node.praises.edges.map((item) => item.node.username);
+    const IPraised = allPraises.includes("filip");
+
+    const [praised, setPraised] = useState(IPraised);
+
+
+    const praise = async (id) => {
+      await praiseTask(id);
+    };
+
     const togglePraise = () => {
       setPraised(!praised);
+      praise(info.item.node.id)
     }
-    
+
     return (
     <View>
       <Text {...footerProps}>
-        By {info.item.node.user.username}     
+      #{info.item.node.id} by {info.item.node.user.username}     
       </Text>
       <Layout style={styles.lContainer}>
       <Layout style={styles.layout}>
