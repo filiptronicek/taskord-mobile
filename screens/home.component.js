@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-community/async-storage";
-import { Button, Divider, Layout, TopNavigation, Avatar, Card, List, Text, CheckBox } from "@ui-kitten/components";
+import { Button, Divider, Layout, TopNavigation, Avatar, Card, List, Text, CheckBox} from "@ui-kitten/components";
 import React, { useState } from "react";
 import { SafeAreaView, View, StyleSheet } from "react-native";
 
@@ -28,11 +28,38 @@ const ListCustomItemShowcase = ( props ) => {
     </View>
   );
 
-  const renderItemFooter = (footerProps, info) => (
-    <Text {...footerProps}>
-      By {info.item.node.user.username}
-    </Text>
-  );
+  const renderItemFooter = (footerProps, info) => {
+    const [praised, setPraised] = useState(false);
+    const togglePraise = () => {
+      setPraised(!praised);
+    }
+    
+    return (
+    <View>
+      <Text {...footerProps}>
+        By {info.item.node.user.username}     
+      </Text>
+      <Layout style={styles.lContainer}>
+      <Layout style={styles.layout}>
+        </Layout>
+        <Layout style={styles.layout}>
+        </Layout>
+
+        <Layout style={styles.layout}>
+          <Button style={styles.button} appearance={praised ?  'filled' : 'outline'} size='large' onPress={togglePraise}>
+            👏
+          </Button>
+        </Layout>
+
+        <Layout style={styles.layout}>
+          <Button style={styles.button} appearance='outline' size='large'>
+            💬
+          </Button>
+        </Layout>
+
+      </Layout>
+    </View>
+  )};
 
   const renderItem = (info) => {
 
@@ -146,5 +173,17 @@ const styles = StyleSheet.create({
   },
   item: {
     marginVertical: 4,
+  },
+  button: {
+    width: "90%"
+  },
+  layout: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  lContainer: {
+    flex: 1,
+    flexDirection: 'row',
   },
 });
