@@ -1,18 +1,21 @@
 import AsyncStorage from "@react-native-community/async-storage";
 import { Button, Divider, Layout, TopNavigation, Avatar, Card, List, Text, CheckBox} from "@ui-kitten/components";
 import React, { useState } from "react";
-import { SafeAreaView, View, StyleSheet } from "react-native";
+import { SafeAreaView, View } from "react-native";
 
 import { signOut } from "../src/auth/signout";
 import { requestData } from "../src/app/api-req";
 import { praiseTask } from "../src/app/praiseTask";
-
+import { styles } from "../src/app/includes/styles";
 
 /* Day.js options */
 
 const dayjs = require('dayjs');
 const relativeTime = require('dayjs/plugin/relativeTime');
+const utc = require('dayjs/plugin/utc');
+
 dayjs.extend(relativeTime);
+dayjs.extend(utc);
 
 const ListCustomItemShowcase = ( props ) => {
 
@@ -71,7 +74,9 @@ const ListCustomItemShowcase = ( props ) => {
 
   const renderItem = (info) => {
 
-    const date = info.item.node.done ? dayjs(info.item.node.done_at).fromNow() : dayjs(info.item.node.created_at).fromNow();
+    const dateTrue = info.item.node.done ? info.item.node.done_at : info.item.node.created_at;
+    const date = dayjs.utc(dateTrue).fromNow();
+    
     return (
     <Card
       style={styles.item}
@@ -104,7 +109,7 @@ export const HomeScreen = ({ navigation }) => {
   const [tasks, setTasks] = useState("");
 
   const getTasks = async() => {
-    if(tasks === "") {
+    if(tasks === "" || tasks === undefined) {
       const reqRes = await requestData("tasks");
       setTasks(reqRes.data);
     }
@@ -170,28 +175,3 @@ export const HomeScreen = ({ navigation }) => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    maxHeight: 1500,
-  },
-  contentContainer: {
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-  },
-  item: {
-    marginVertical: 4,
-  },
-  button: {
-    width: "90%"
-  },
-  layout: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  lContainer: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-});

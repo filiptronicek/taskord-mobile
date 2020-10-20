@@ -23,7 +23,7 @@ export const requestData = async (params) => {
     if (params === "tasks") {
         query = `
       {
-        tasks(first: 50) {
+        tasks(first: 25 done: true) {
           pageInfo {
             hasNextPage
             currentPage
@@ -61,6 +61,5 @@ export const requestData = async (params) => {
         },
         body: JSON.stringify({query})
     };
-
     return fetch(url, opts).then((res) => res.json()).then((resp) => resp);
 };
