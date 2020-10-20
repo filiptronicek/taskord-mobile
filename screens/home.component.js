@@ -17,7 +17,7 @@ const utc = require('dayjs/plugin/utc');
 dayjs.extend(relativeTime);
 dayjs.extend(utc);
 
-const plusIcon = (props) => (
+const plusIcon = ( props ) => (
   <Icon {...props} name='plus-outline'/>
 );
 
