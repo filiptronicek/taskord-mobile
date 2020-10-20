@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-community/async-storage";
 import { Button, Divider, Layout, TopNavigation, Avatar, Card, List, Text, CheckBox} from "@ui-kitten/components";
 import React, { useState } from "react";
-import { SafeAreaView, View } from "react-native";
+import { SafeAreaView, View, Alert } from "react-native";
 
 import { signOut } from "../src/auth/signout";
 import { requestData } from "../src/app/api-req";
@@ -43,6 +43,7 @@ const ListCustomItemShowcase = ( props ) => {
     const togglePraise = async() => {
       const resp = await praiseTask(info.item.node.id);
       if(!resp.data.praiseTask.response.includes("can't")) setPraised(!praised); 
+      else Alert.alert("Error praising task", "You cannot praise your own task!")
     }
 
     return (
@@ -76,7 +77,7 @@ const ListCustomItemShowcase = ( props ) => {
 
     const dateTrue = info.item.node.done ? info.item.node.done_at : info.item.node.created_at;
     const date = dayjs.utc(dateTrue).fromNow();
-    
+
     return (
     <Card
       style={styles.item}
