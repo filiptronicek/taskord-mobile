@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-community/async-storage";
-import { Button, Divider, Layout, TopNavigation, Avatar, Card, List, Text, CheckBox} from "@ui-kitten/components";
+import { Button, Divider, Layout, TopNavigation, Avatar, Card, List, Text, CheckBox, Icon } from "@ui-kitten/components";
 import React, { useState } from "react";
 import { SafeAreaView, View, Alert } from "react-native";
 
@@ -16,6 +16,10 @@ const utc = require('dayjs/plugin/utc');
 
 dayjs.extend(relativeTime);
 dayjs.extend(utc);
+
+const plusIcon = (props) => (
+  <Icon {...props} name='plus-outline'/>
+);
 
 const ListCustomItemShowcase = ( props ) => {
 
@@ -153,6 +157,7 @@ export const HomeScreen = ({ navigation }) => {
     >
       <TopNavigation title="TASKORD" alignment="center" />
       <Divider />
+      <Button onPress={signUserOut}>Sign Out</Button>
       <View style={{alignItems: 'flex-end'}}>
         <Avatar source={{uri: avatarURL}} style={{justifyContent: 'flex-start', alignItems: 'flex-start'}}/>
       </View>
@@ -169,7 +174,16 @@ export const HomeScreen = ({ navigation }) => {
           <View>
             <Text category="h2" style={{marginLeft: 10}}>Tasks</Text>
             <ListCustomItemShowcase data={tasks?.tasks?.edges} />
-            <Button onPress={signUserOut}>Sign Out</Button>
+            <Layout style={{...styles.lContainer, marginBottom: 50}}>
+
+            <Layout style={styles.layout}>
+            </Layout>
+            <Layout style={styles.layout}>
+            </Layout>
+            <Layout style={styles.layout}>
+            <Button status='primary' appearance='filled' accessoryLeft={plusIcon} size='giant' onPress={() => {alert("You can't do shit")}}></Button>
+              </Layout>
+              </Layout>
           </View>
         )}
       </Layout>

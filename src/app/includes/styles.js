@@ -12,7 +12,8 @@ export const styles = StyleSheet.create({
         marginVertical: 4
     },
     button: {
-        width: "90%"
+        width: "90%",
+        height: "100%",
     },
     layout: {
         flex: 1,
@@ -22,5 +23,8 @@ export const styles = StyleSheet.create({
     lContainer: {
         flex: 1,
         flexDirection: 'row'
-    }
+    },
+    backdrop: {
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
 });
