@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-community/async-storage";
-import { Button, Divider, Layout, TopNavigation, Avatar, Card, List, Text, CheckBox, Icon } from "@ui-kitten/components";
+import { Button, Divider, Layout, TopNavigation, Avatar, Card, List, Text, CheckBox, Icon, Modal, Input } from "@ui-kitten/components";
 import React, { useState } from "react";
 import { SafeAreaView, View, Alert } from "react-native";
 
@@ -108,8 +108,10 @@ const ListCustomItemShowcase = ( props ) => {
 };
 
 export const HomeScreen = ({ navigation }) => {
+  const [visible, setVisible] = useState(false);
   const [showSignIn, setShowSignIn] = useState(true);
-  
+  const [inputValue, setInputValue] = useState('');
+
   const [avatarURL, setAvatarURL] = useState("assets/image-person.png");
   const [tasks, setTasks] = useState("");
 
@@ -173,6 +175,35 @@ export const HomeScreen = ({ navigation }) => {
         ) : (
           <View>
             <Text category="h2" style={{marginLeft: 10}}>Tasks</Text>
+            <Modal
+            visible={visible}
+            backdropStyle={styles.backdrop}
+            style={{width: "95%"}}
+            onBackdropPress={() => setVisible(false)}>
+              <Card disabled={true}>
+                <Text category="h4">Post a new task</Text>
+                <Input
+                placeholder='Place your Text'
+                value={inputValue}
+                onChangeText={nextValue => setInputValue(nextValue)}
+                />
+                <Layout style={{...styles.lContainer, width: '100%'}}>
+                  <Layout style={styles.layout}>
+                    <Button onPress={() => setVisible(false)} appearance="ghost">
+                      DISMISS
+                    </Button>
+                  </Layout>
+                  <Layout style={styles.layout}>
+                  </Layout>
+                  <Layout style={styles.layout}>
+                    <Button onPress={() => setVisible(false)}>
+                      POST
+                    </Button>
+                  </Layout>
+                </Layout>
+
+              </Card>
+            </Modal>
             <ListCustomItemShowcase data={tasks?.tasks?.edges} />
             <Layout style={{...styles.lContainer, marginBottom: 50}}>
 
@@ -181,7 +212,7 @@ export const HomeScreen = ({ navigation }) => {
             <Layout style={styles.layout}>
             </Layout>
             <Layout style={styles.layout}>
-            <Button status='primary' appearance='filled' accessoryLeft={plusIcon} size='giant' onPress={() => {alert("You can't do shit")}}></Button>
+            <Button status='primary' appearance='filled' accessoryLeft={plusIcon} size='giant' onPress={() => {setVisible(true)}}></Button>
               </Layout>
               </Layout>
           </View>
