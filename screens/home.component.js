@@ -8,6 +8,8 @@ import { requestData } from "../src/app/api-req";
 import { praiseTask } from "../src/app/praiseTask";
 import { styles } from "../src/app/includes/styles";
 
+import { placeHolder } from "../src/app/inputPlaceholder";
+
 /* Day.js options */
 
 const dayjs = require('dayjs');
@@ -183,7 +185,7 @@ export const HomeScreen = ({ navigation }) => {
               <Card disabled={true}>
                 <Text category="h4">Post a new task</Text>
                 <Input
-                placeholder='Place your Text'
+                placeholder={placeHolder}
                 value={inputValue}
                 onChangeText={nextValue => setInputValue(nextValue)}
                 />
