@@ -2,6 +2,7 @@ import AsyncStorage from "@react-native-community/async-storage";
 import { Button, Divider, Layout, TopNavigation, Avatar, Card, List, Text, CheckBox, Icon, Modal, Input } from "@ui-kitten/components";
 import React, { useState } from "react";
 import { SafeAreaView, View, Alert } from "react-native";
+import { ProfileModal } from "../src/components/avatarModal";
 
 import { signOut } from "../src/auth/signout";
 import { requestData } from "../src/app/api-req";
@@ -177,6 +178,7 @@ export const HomeScreen = ({ navigation }) => {
         ) : (
           <View>
             <Text category="h2" style={{marginLeft: 10}}>Tasks</Text>
+            <ProfileModal></ProfileModal>
             <Modal
             visible={visible}
             backdropStyle={styles.backdrop}
