@@ -39,6 +39,7 @@ export const requestData = async (params, args = {}) => {
               created_at
               done_at
               done
+              hasPraised
               praises (first: 100) {
                 edges {
                   node {
