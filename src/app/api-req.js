@@ -4,7 +4,7 @@ import {api_endpoint as url} from "../consts";
 
 const fetch = require("node-fetch");
 
-export const requestData = async (params) => {
+export const requestData = async (params, args = {}) => {
     const token = await AsyncStorage.getItem("USR_TOKEN");
 
     let query;
@@ -51,6 +51,19 @@ export const requestData = async (params) => {
         }
       }
       `;
+    }
+
+    if(params === "postTask") {
+      query = `
+        mutation {
+          createTask(task: "${args.taskText}", done: true, source: "Taskord mobile") {
+            task {
+              task
+            }
+            response
+          }
+        }
+        `;
     }
 
     const opts = {

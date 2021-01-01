@@ -200,7 +200,11 @@ export const HomeScreen = ({ navigation }) => {
                   <Layout style={styles.layout}>
                   </Layout>
                   <Layout style={styles.layout}>
-                    <Button onPress={() => setVisible(false)}>
+                    <Button onPress={() => {
+                        requestData("postTask", { taskText: inputValue }).then(() => {
+                          setVisible(false);
+                        });
+                      }}>
                       POST
                     </Button>
                   </Layout>

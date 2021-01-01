@@ -15,7 +15,7 @@ export const ProfileModal = () => {
       getAvatar();
 
     return (
-        <Modal visible={true}
+        <Modal visible={visible}
             backdropStyle={
                 styles.backdrop
             }
