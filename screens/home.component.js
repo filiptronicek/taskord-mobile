@@ -66,7 +66,7 @@ const ListCustomItemShowcase = ( props ) => {
 
         <Layout style={styles.layout}>
           <Button style={styles.button} appearance={praised ?  'filled' : 'outline'} size='large' onPress={togglePraise}>
-            👏
+            👍
           </Button>
         </Layout>
 
