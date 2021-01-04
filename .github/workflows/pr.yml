@@ -16,7 +16,7 @@ jobs:
       - uses: expo/expo-github-action@5.1.1
         with:
           expo-version: 3.x
-      - run: npm i
+      - run: yarn
       - run: expo doctor
       - uses: actions/cache@v2
         with:
