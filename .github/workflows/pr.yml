@@ -13,11 +13,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
-      - run:  \
-          /bin/mkdir ~/npm-global 
-          npm config set prefix '~/npm-global'
-          export PATH=~/npm-global/bin:$PATH
-          source ~/.profile
       - uses: expo/expo-github-action@5.1.1
         with:
           expo-version: 3.x
