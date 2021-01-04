@@ -6,13 +6,18 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macOS-latest, windows-latest]
+        os: [ubuntu-latest, macOS-latest, macos-11.0, windows-latest]
         node: [10, 12, 14]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
+      - run:  \
+          mkdir ~/npm-global 
+          npm config set prefix '~/npm-global'
+          export PATH=~/npm-global/bin:$PATH
+          source ~/.profile
       - uses: expo/expo-github-action@5.1.1
         with:
           expo-version: 3.x
