@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - run:  \
-          mkdir ~/npm-global 
+          /bin/mkdir ~/npm-global 
           npm config set prefix '~/npm-global'
           export PATH=~/npm-global/bin:$PATH
           source ~/.profile
