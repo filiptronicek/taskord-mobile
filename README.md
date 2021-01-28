@@ -4,7 +4,7 @@
 
 Mobile app for the [Taskord](https://gitlab.com/taskord/taskord) platform
 
-<a href="https://gitpod.io/#https://gitlab.com/taskord/taskord" style="padding: 10px;">
+<a href="https://gitpod.io/#https://github.com/filiptronicek/taskord-mobile" style="padding: 10px;">
     <img src="https://gitpod.io/button/open-in-gitpod.svg" width="150" alt="Push" align="center">
 </a>
 
